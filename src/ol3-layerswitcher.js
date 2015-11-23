@@ -1,3 +1,5 @@
+var ol = require('openlayers');
+
 /**
  * OpenLayers 3 Layer Switcher Control.
  * See [the examples](./examples) for usage.
@@ -230,3 +232,5 @@ ol.control.LayerSwitcher.forEachRecursive = function(lyr, fn) {
         }
     });
 };
+
+module.exports = ol;

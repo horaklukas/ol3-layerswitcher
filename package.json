@@ -2,6 +2,7 @@
   "name": "ol3-layerswitcher",
   "version": "1.0.2",
   "description": "Layer switcher control for OpenLayers 3",
+  "main": "./src/ol3-layerswitcher.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/walkermatt/ol3-layerswitcher.git"
