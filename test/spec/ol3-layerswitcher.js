@@ -16,7 +16,7 @@ describe('ol.control.LayerSwitcher', function() {
                         type: 'base',
                         source: new ol.source.TileDebug({
                             projection: 'EPSG:3857',
-                            tileGrid: new ol.tilegrid.XYZ({
+                            tileGrid: new ol.tilegrid.createXYZ({
                                 maxZoom: 22
                             })
                         })
@@ -26,7 +26,7 @@ describe('ol.control.LayerSwitcher', function() {
                         type: 'base',
                         source: new ol.source.TileDebug({
                             projection: 'EPSG:3857',
-                            tileGrid: new ol.tilegrid.XYZ({
+                            tileGrid: new ol.tilegrid.createXYZ({
                                 maxZoom: 22
                             })
                         })
@@ -40,7 +40,7 @@ describe('ol.control.LayerSwitcher', function() {
                         title: 'Never shown',
                         source: new ol.source.TileDebug({
                             projection: 'EPSG:3857',
-                            tileGrid: new ol.tilegrid.XYZ({
+                            tileGrid: new ol.tilegrid.createXYZ({
                                 maxZoom: 22
                             })
                         })
@@ -48,7 +48,7 @@ describe('ol.control.LayerSwitcher', function() {
                     new ol.layer.Tile({
                         source: new ol.source.TileDebug({
                             projection: 'EPSG:3857',
-                            tileGrid: new ol.tilegrid.XYZ({
+                            tileGrid: new ol.tilegrid.createXYZ({
                                 maxZoom: 22
                             })
                         })
@@ -59,7 +59,7 @@ describe('ol.control.LayerSwitcher', function() {
                 title: 'Bar',
                 source: new ol.source.TileDebug({
                     projection: 'EPSG:3857',
-                    tileGrid: new ol.tilegrid.XYZ({
+                    tileGrid: new ol.tilegrid.createXYZ({
                         maxZoom: 22
                     })
                 })
@@ -68,7 +68,7 @@ describe('ol.control.LayerSwitcher', function() {
             new ol.layer.Tile({
                 source: new ol.source.TileDebug({
                     projection: 'EPSG:3857',
-                    tileGrid: new ol.tilegrid.XYZ({
+                    tileGrid: new ol.tilegrid.createXYZ({
                         maxZoom: 22
                     })
                 })
@@ -105,6 +105,17 @@ describe('ol.control.LayerSwitcher', function() {
             jQuery('#map').click();
             expect(jQuery('.layer-switcher').hasClass('.shown')).to.be(false);
             expect(jQuery('.layer-switcher .panel:visible').length).to.be(0);
+        });
+        it('should prevent submit of parent form', function() {
+            jQuery(target).wrap('<form></form>');
+
+            expect(location.hash).to.not.equal('#submited');
+            location.hash = 'submited';
+
+            jQuery('.layer-switcher button').click();
+
+            location.hash = '';
+            jQuery(target).unwrap();
         });
     });
 
